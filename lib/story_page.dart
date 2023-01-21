@@ -58,22 +58,23 @@ class _StoryPageState extends ConsumerState<StoryPage> {
               SizedBox(
                 height: 20.0,
               ),
-              Expanded(
-                flex: 2,
-                //TODO: Step 26 - Use a Flutter Visibility Widget to wrap this FlatButton.
-                //TODO: Step 28 - Set the "visible" property of the Visibility Widget to equal the output from the buttonShouldBeVisible() method in the storyBrain.
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                  ),
-                  onPressed: () {
-                    storyFunc.nextStory(2);
-                    ;
-                  },
-                  child: Text(
-                    storyDetails.getChoice2(storyNum),
-                    style: TextStyle(
-                      fontSize: 20.0,
+              Visibility(
+                visible: storyFunc.buttonVisibility(),
+                child: Expanded(
+                  flex: 2,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                    ),
+                    onPressed: () {
+                      storyFunc.nextStory(2);
+                      ;
+                    },
+                    child: Text(
+                      storyDetails.getChoice2(storyNum),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
